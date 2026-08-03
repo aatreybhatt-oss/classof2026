@@ -139,7 +139,7 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-
+        /* --- Button Styles --- */
         .btn {
             padding: 12px 20px;
             text-decoration: none;
@@ -167,6 +167,37 @@
         .btn-social:hover {
             background-color: #1d0101;
             transform: translateY(-2px);
+        }
+        /* --- Footer Styles --- */
+        .site-footer {
+            margin-top: 80px; /* Gives space between the photo and footer */
+            padding: 40px 20px;
+            background-color: #0209111d; /* A slightly darker gray/blue than the background */
+            border-top: 0px solid #e2e8f0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #c4c4c4;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #c4c4c4;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 5px;
+            font-size: 0.6rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -279,5 +310,15 @@
             }
         }
     </script>
+    <footer class="site-footer">
+    <div class="footer-content">
+        <p><i>"Real Engineers don't use crossfades" - Pablo Mungia</i></p>
+        <p style="font-size: 0.6rem;">Webpage created by Pipo Fernandez & Aatrey Bhatt</p>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/pipopottamus_/">@pipopottamus_</a> • <a href="https://www.instagram.com/jacktheriffer/">@jacktheriffer</a>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
