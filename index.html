@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Showcase</title>
+    <title>MPTI Showcase</title>
     <style>
         :root {
-            /* You can change this color to any hex code you like */
-            --primary-color: rgba(0,0,0,0); 
-            --bg-color: #f8fafc;
+            --primary-color: rgba(0, 0, 0, 0); 
+            --bg-color: #590303;
         }
 
         body {
@@ -21,8 +20,8 @@
             margin: 0;
         }
 
-        h1 { color: #1e293b; margin-bottom: 10px; }
-        p { color: #64748b; margin-bottom: 40px; }
+        h1 { color: #f6f9ff; margin-bottom: 10px; }
+        p { color: #c3cede; margin-bottom: 40px; }
 
         /* The Container */
         .photo-container {
@@ -42,7 +41,6 @@
             height: auto;
         }
 
-        /* OPTION 3: Ghost Style Hotspots */
         .hotspot {
             position: absolute;
             width: 30px;
@@ -86,10 +84,20 @@
             justify-content: center;
             align-items: center;
             z-index: 100;
+
+            backdrop-filter: blur(2px); /* This blurs the photo behind the modal */
+            -webkit-backdrop-filter: blur(2px); /* Support for Safari */
+
+            animation: modalAppear 0.3s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .modal-content {
-            background: white;
+            background: rgba(25, 22, 22, 0.183);
             padding: 30px;
             border-radius: 15px;
             max-width: 600px;
@@ -141,8 +149,8 @@
     <div class="modal" id="infoModal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h2 id="modalName">Student Name</h2>
-            <p id="modalBio">Student Bio goes here...</p>
+            <h2 id="modalName" style="color: #f6f9ff;">Student Name</h2>
+            <p id="modalBio" style="color: #c3cede;">Student Bio goes here...</p>
             <div class="video-container">
                 <iframe id="modalVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin""></iframe>
             </div>
