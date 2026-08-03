@@ -132,6 +132,42 @@
             height: 100%;
             border-radius: 10px;
         }
+        .button-group {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .btn-project {
+            background-color: var(--bg-color);
+            color: white;
+        }
+
+        .btn-project:hover {
+            background-color: #1d0101;
+            transform: translateY(-2px);
+        }
+
+        .btn-social {
+            background-color: #030959;
+            color: white;
+        }
+
+        .btn-social:hover {
+            background-color: #1d0101;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -155,6 +191,10 @@
             <div class="video-container">
                 <iframe id="modalVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin""></iframe>
             </div>
+             <!-- Container for the new links -->
+            <div class="button-group" id="buttonGroup">
+                <!-- Buttons will be injected here by JS -->
+            </div>
         </div>
     </div>
 
@@ -166,21 +206,27 @@
                 bio: "Nick is a heavy bass extraordinaire. He has created the most kickass distortion plugin of 2026 (as voted by MPTI class of 2026).",
                 youtubeId: "3zZfrbIjKeE",  // Replace with actual YouTube video ID
                 top: "32%",   // Adjust these % to match faces in CLASS.jpeg
-                left: "25%"   
+                left: "25%",   
+                projectLink: "https://google.com", // Replace with real link
+                socialLink: "https://instagram.com" // Replace with real link
             },
             {
                 name: "Alejandro Garcia",
                 bio: "Alejandro is a Peruvian singer songwriter and producer",
                 youtubeId: "8GAoAffFvYA",
                 top: "44.5%",
-                left: "55.75%"
+                left: "55.75%",
+                projectLink: "https://google.com",
+                socialLink: "https://instagram.com"
             },
             {
                 name: "Alessandro Niro",
                 bio: "Alessandro is a talented musician and producer from Mexico.",
                 youtubeId: "kYQtaWbDazQ",
                 top: "50.5%",
-                left: "74%"
+                left: "74%",
+                projectLink: "https://google.com",
+                socialLink: "https://instagram.com"
             }
         ];
 
@@ -189,6 +235,7 @@
         const modalName = document.getElementById('modalName');
         const modalBio = document.getElementById('modalBio');
         const modalVideo = document.getElementById('modalVideo');
+        const buttonGroup = document.getElementById('buttonGroup');
 
         // 2. LOGIC: Create the dots on the screen automatically
         classmates.forEach(person => {
@@ -210,6 +257,11 @@
             modalBio.innerText = person.bio;
             // YouTube Embed URL
             modalVideo.src = `https://www.youtube-nocookie.com/embed/${person.youtubeId}?autoplay=1`;
+             // Clear old buttons and add new ones
+            buttonGroup.innerHTML = `
+                <a href="${person.projectLink}" target="_blank" class="btn btn-project">View Project Materials</a>
+                <a href="${person.socialLink}" target="_blank" class="btn btn-social">Follow on Socials</a>
+            `;
             modal.style.display = 'flex';
         }
 
@@ -217,6 +269,7 @@
         function closeModal() {
             modal.style.display = 'none';
             modalVideo.src = ""; // Stop the video from playing
+            buttonGroup.innerHTML = ""; // Clear buttons when closed
         }
 
         // Close modal if clicking outside the white box
