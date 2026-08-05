@@ -12,31 +12,47 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            /* THE ROOM BACKGROUND */
+            background-image: url('room.jpeg'); /* REPLACE WITH YOUR ROOM IMAGE */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 50px;
             margin: 0;
+            min-height: 100vh;
         }
 
-        h1 { color: #f6f9ff; margin-bottom: 10px; }
-        p { color: #c3cede; margin-bottom: 40px; }
+        h1 { color: #f6f9ff; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        p { color: #c3cede; margin-bottom: 40px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
 
-        /* The Container */
+        /* THE TV FRAME - This mimics the physical TV in the room */
+        .tv-wrapper {
+            position: relative;
+            padding: 20px;
+            background: #1a1a1a; /* The black bezel */
+            border-radius: 40px;
+            border: 10px solid #2c2c2c;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+            display: inline-block;
+            margin-bottom: 50px;
+        }
+
+        /* THE SCREEN (Your existing photo container) */
         .photo-container {
             position: relative;
             display: inline-block;
-            border-radius: 15px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            border: 5px solid white;
+            /* Removed the white border to look more like a screen */
             cursor: crosshair;
         }
 
         .group-photo {
             display: block;
-            max-width: 900px;
+            max-width: 800px;
             width: 100%;
             height: auto;
         }
@@ -54,7 +70,7 @@
             animation: pulse 2s infinite;
         }
 
-        .photo-container:hover .hotspot {
+        .tv-wrapper:hover .hotspot {
             opacity: 1;
         }
 
@@ -76,13 +92,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 100;
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             animation: modalAppear 0.3s ease-out;
         }
 
@@ -92,7 +108,7 @@
         }
 
         .modal-content {
-            background: rgba(25, 22, 22, 0.95);
+            background: rgba(25, 22, 22, 0.98);
             padding: 30px;
             border-radius: 20px;
             max-width: 850px;
@@ -113,7 +129,6 @@
             color: white;
         }
 
-        /* Header Styling */
         .modal-header h2 {
             color: #f6f9ff;
             margin: 0;
@@ -126,7 +141,6 @@
             color: #c3cede;
         }
 
-        /* Side-by-Side Layout */
         .modal-body {
             display: flex;
             gap: 40px;
@@ -141,7 +155,7 @@
             height: 0;
             border-radius: 15px;
             overflow: hidden;
-            flex: 2; /* Takes up 2/3 of the space */
+            flex: 2;
         }
 
         .video-container iframe {
@@ -152,12 +166,11 @@
             height: 100%;
         }
 
-        /* The Portrait Column (Right Side) */
         .portrait-column {
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex: 1; /* Takes up 1/3 of the space */
+            flex: 1;
             text-align: center;
         }
 
@@ -222,8 +235,8 @@
         .site-footer {
             margin-top: 80px;
             padding: 40px 20px;
-            background-color: #0209111d;
-            border-top: 0px solid #e2e8f0;
+            background-color: rgba(0,0,0,0.5); /* Semi-transparent to see the room slightly */
+            border-top: 1px solid rgba(255,255,255,0.1);
             width: 100%;
             text-align: center;
         }
@@ -232,10 +245,6 @@
             margin: 5px 0;
             font-size: 0.9rem;
             color: #c4c4c4;
-        }
-
-        .footer-links {
-            margin-top: 15px;
         }
 
         .footer-links a {
@@ -253,8 +262,7 @@
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .modal-body {
-                flex-direction: column; /* Stack them vertically on phones */
-                gap: 20px;
+                flex-direction: column;
             }
             .video-container {
                 flex: none;
@@ -263,16 +271,24 @@
             .portrait-column {
                 width: 100%;
             }
+            .tv-wrapper {
+                padding: 10px;
+                border-radius: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1 style="color: #f6f9ff;">Class of 2026</h1>
-    <p style="color: #c3cede;">Click on a person to see their journey video</p>
+    <h1 style="color: #f6f9ff;"><img src="banner.png" alt="Class of 2026"></h1>
+    <p style="color: #060a10;">Click on a person to see their journey video</p>
 
-    <div class="photo-container" id="photoContainer">
-        <img src="CLASS.jpeg" alt="Class Group" class="group-photo">
+    <!-- THE TV WRAPPER -->
+    <div class="tv-wrapper">
+        <div class="photo-container" id="photoContainer">
+            <img src="CLASS.jpeg" alt="Class Group" class="group-photo">
+            <!-- Hotspots generated by JS -->
+        </div>
     </div>
 
     <div class="modal" id="infoModal">
@@ -285,12 +301,10 @@
             </div>
 
             <div class="modal-body">
-                <!-- Left: Video -->
                 <div class="video-container">
                     <iframe id="modalVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 </div>
 
-                <!-- Right: Portrait + Person Info -->
                 <div class="portrait-column">
                     <img id="modalPersonImage" src="" alt="Portrait" class="person-portrait">
                     <div class="portrait-text">
@@ -300,20 +314,17 @@
                 </div>
             </div>
 
-            <div class="button-group" id="buttonGroup">
-                <!-- Buttons injected by JS -->
-            </div>
+            <div class="button-group" id="buttonGroup"></div>
         </div>
     </div>
 
     <script>
-        // 1. DATA: Added projectTitle and projectDescription
         const classmates = [
             {
                 name: "Nick Marino",
-                bio: "Nick is a heavy bass extraordinaire, known for his innovative sound design. An accomplished producer and DJ, he has a knack for creating unique audio experiences that push the boundaries of electronic music.",
+                bio: "Nick is a heavy bass extraordinaire, known for his innovative sound design.",
                 projectTitle: "Redline2Headline",
-                projectDescription: "The most-voted distortion plugin of 2026, designed for extreme bass textures. Multiple distortion algorithms and a skin in collaboration with box of frogs",
+                projectDescription: "The most-voted distortion plugin of 2026, designed for extreme bass textures.",
                 youtubeId: "1sRkASGlOqc",
                 top: "32%",
                 left: "25%",
@@ -362,11 +373,7 @@
             dot.className = 'hotspot';
             dot.style.top = person.top;
             dot.style.left = person.left;
-            
-            dot.onclick = () => {
-                showDetails(person);
-            };
-
+            dot.onclick = () => showDetails(person);
             container.appendChild(dot);
         });
 
@@ -374,16 +381,13 @@
             modalProjectTitle.innerText = person.projectTitle;
             modalProjectDescription.innerText = person.projectDescription;
             modalVideo.src = `https://www.youtube-nocookie.com/embed/${person.youtubeId}?autoplay=1`;
-            
             modalPersonImage.src = person.portraitUrl;
             modalName.innerText = person.name;
             modalStudentBio.innerText = person.bio;
-            
             buttonGroup.innerHTML = `
                 <a href="${person.projectLink}" target="_blank" class="btn btn-project">View Project Materials</a>
                 <a href="${person.socialLink}" target="_blank" class="btn btn-social">Follow on Socials</a>
             `;
-            
             modal.style.display = 'flex';
         }
 
@@ -394,9 +398,7 @@
         }
 
         window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
+            if (event.target == modal) closeModal();
         }
     </script>
 
@@ -409,6 +411,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
