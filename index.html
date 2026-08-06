@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script src="data.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,59 +27,48 @@
         </div>
     </footer>
 
-    <script>
-    // 1. THE DATA
-    const classmates = [
-        { name: "Nick Marino", portraitUrl: "nick.png", profilePage: "profile.html" },
-        { name: "Alejandro Garcia", portraitUrl: "alejandro.png", profilePage: "profile.html" },
-        { name: "Pipo Fernandez", portraitUrl: "pipo.png", profilePage: "profile.html" },
-        { name: "Student 4", portraitUrl: "student4.png", profilePage: "profile.html" },
-        { name: "Student 5", portraitUrl: "student5.png", profilePage: "profile.html" }
-        // Add the rest of your students here...
-    ];
+<script>
+  // Load the data from our external file
+const data = classmates; 
 
-    const container = document.getElementById('galleryContainer');
+const container = document.getElementById('galleryContainer');
 
-    // 2. THE SHUFFLE FUNCTION
-    // This takes any array and mixes it up randomly
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            // Swap elements
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
+// The Shuffle Function
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
+    return array;
+}
 
-    // 3. THE SCATTER LOGIC
-    // First, we shuffle the list
-    const shuffledClassmates = shuffleArray([...classmates]);
+// Shuffle the data
+const shuffledData = shuffleArray([...data]);
 
-    // Then, we create the polaroids from the shuffled list
-    shuffledClassmates.forEach((person) => {
-        const polaroid = document.createElement('a');
-        polaroid.href = person.profilePage;
-        polaroid.className = 'gallery-polaroid';
-        
-        // Random rotation between -10 and 10 degrees
-        const randomRotation = (Math.random() * 20 - 10); 
-        polaroid.style.transform = `rotate(${randomRotation}deg)`;
-        
-        // Random horizontal offset so they don't line up perfectly
-        const randomX = (Math.random() * 40 - 20);
-        polaroid.style.marginLeft = `${randomX}px`;
+// Create the Polaroids
+shuffledData.forEach((person) => {
+    const polaroid = document.createElement('a');
+    // This links to the profile page with a unique ID (e.g., profile.html?id=nick)
+    polaroid.href = `profile.html?id=${person.id}`;
+    polaroid.className = 'gallery-polaroid';
+    
+    const randomRotation = (Math.random() * 20 - 10); 
+    polaroid.style.transform = `rotate(${randomRotation}deg)`;
+    
+    const randomX = (Math.random() * 40 - 20);
+    polaroid.style.marginLeft = `${randomX}px`;
 
-        polaroid.innerHTML = `
-            <div class="polaroid-container">
-                <img src="${person.portraitUrl}" alt="${person.name}" class="person-portrait">
-                <div class="polaroid-footer">
-                    <h3 style="margin:0;">${person.name}</h3>
-                </div>
+    polaroid.innerHTML = `
+        <div class="polaroid-container">
+            <img src="${person.portraitUrl}" alt="${person.name}" class="person-portrait">
+            <div class="polaroid-footer">
+                <h3 style="margin:0;">${person.name}</h3>
             </div>
-        `;
+        </div>
+    `;
 
-        container.appendChild(polaroid);
-    });
+    container.appendChild(polaroid);
+});
 </script>
 </body>
 </html>
