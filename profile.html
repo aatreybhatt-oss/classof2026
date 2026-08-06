@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <!-- Font Setup: Replace with your actual local font path -->
+    <style>
+        @font-face {
+            font-family: 'MarkerFelt';
+            src: url('fonts/MarkerFelt.ttc'); /* Ensure this path is correct */
+        }
+
+        :root {
+            --bg-color: #590303;
+            --primary-color: #6366f1;
+            --text-light: #f6f9ff;
+            --text-dim: #c3cede;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            background-image: url('room.jpg'); /* Keeping the room background for consistency */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .nav-back {
+            margin-bottom: 30px;
+        }
+
+        .btn-back {
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: white;
+            color: var(--bg-color);
+        }
+
+        /* Main Profile Card */
+        .profile-card {
+            background: rgba(25, 22, 22, 0.95);
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 900px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .project-header h2 {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+
+        .project-header p {
+            color: var(--text-dim);
+            margin: 10px 0 40px 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* Two Column Layout */
+        .profile-body {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        /* Left Column: Portrait & Bio */
+        .portrait-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .person-portrait {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .portrait-text h3 {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .portrait-text p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin: 10px 0 0 0;
+            line-height: 1.5;
+        }
+
+        /* Right Column: Video & Buttons */
+        .video-column {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-project {
+            background-color: var(--bg-color);
+            color: white;
+        }
+
+        .btn-project:hover {
+            background-color: #1d0101;
+            transform: translateY(-3px);
+        }
+
+        .btn-social {
+            background-color: #030959;
+            color: white;
+        }
+
+        .btn-social:hover {
+            background-color: #1d0101;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .profile-body {
+                flex-direction: column; /* Stack portrait on top of video */
+                gap: 30px;
+            }
+            .video-container {
+                width: 100%;
+                max-width: 100%;
+            }
+            .portrait-column {
+                flex: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="btn-back">← Back to Gallery</a>
+
+    <div class="profile-card">
+        <div class="project-header">
+            <h2 id="projTitle">Project Title</h2>
+            <p id="projDesc">Project description goes here...</p>
+        </div>
+
+        <div class="profile-body">
+            <!-- Left: Person -->
+            <div class="portrait-column">
+                <img id="personImg" src="" alt="Portrait" class="person-portrait">
+                <div class="portrait-text">
+                    <h3 id="personName">Student Name</h3>
+                    <p id="personBio">Student bio goes here...</p>
+                </div>
+            </div>
+
+            <!-- Right: Video -->
+            <div class="video-column">
+                <div class="video-container">
+                    <iframe id="mainVideo" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="button-group" id="btnGroup">
+                    <!-- Buttons injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This script will eventually be replaced by the "Dynamic Fetch" 
+        // We are currently using a dummy object to test the design.
+        const personData = {
+            name: "Nick Marino",
+            bio: "Nick is a heavy bass extraordinaire, known for his innovative sound design.",
+            projectTitle: "Redline2Headline",
+            projectDescription: "The most-voted distortion plugin of 2026, designed for extreme bass textures.",
+            youtubeId: "1sRkASGlOqc",
+            portraitUrl: "nick.png",
+            projectLink: "https://google.com",
+            socialLink: "https://www.instagram.com/nick.marino13/"
+        };
+
+        // Inject the data into the page
+        document.getElementById('projTitle').innerText = personData.projectTitle;
+        document.getElementById('projDesc').innerText = personData.projectDescription;
+        document.getElementById('personImg').src = personData.portraitUrl;
+        document.getElementById('personName').innerText = personData.name;
+        document.getElementById('personBio').innerText = personData.bio;
+        document.getElementById('mainVideo').src = `https://www.youtube-nocookie.com/embed/${personData.youtubeId}?autoplay=1`;
+        
+        document.getElementById('btnGroup').innerHTML = `
+            <a href="${personData.projectLink}" target="_blank" class="btn btn-project">View Project Materials</a>
+            <a href="${personData.socialLink}" target="_blank" class="btn btn-social">Follow on Socials</a>
+        `;
+    </script>
+</body>
+</html>
