@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="data.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="profile-page">
+
+    <a href="index.html" class="btn-back">← Back to Gallery</a>
+
+    <main class="profile-container">
+        <!-- Left Column: Portrait & Bio -->
+        <div class="left-column">
+            <div class="polaroid-container">
+                <img id="personImg" src="" alt="Portrait" class="person-portrait">
+                <div class="polaroid-footer">
+                    <h3 id="personName">Student Name</h3>
+                </div>
+            </div>
+            <p id="personBio">Student bio goes here...</p>
+        </div>
+
+
+        <!-- Right Column: Project Info & Video -->
+        <div class="right-column">
+            <div class="project-header">
+                <h2 id="projTitle">Project Title</h2>
+                <p id="projDesc">Project description goes here...</p>
+            </div>
+
+            <div class="video-container">
+                <iframe id="mainVideo" src="" allow="autoplay; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+
+            <div class="button-group" id="btnGroup">
+                <!-- Buttons injected by JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p><i>"Real Engineers don't use crossfades" - Pablo Mungia</i></p>
+            <p style="font-size: 0.6rem;">Webpage created by Pipo Fernandez & Aatrey Bhatt</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/pipopottamus_/">@pipopottamus_</a> • <a href="https://www.instagram.com/jacktheriffer/">@jacktheriffer</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       // Load the data
+const data = classmates;
+
+// 1. Get the ID from the URL (e.g., profile.html?id=nick)
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get('id');
+
+// 2. Find the person in our data list
+const person = data.find(p => p.id === userId);
+
+// 3. If we found them, fill the page!
+if (person) {
+    document.getElementById('projTitle').innerText = person.projectTitle;
+    document.getElementById('projDesc').innerText = person.projectDescription;
+    document.getElementById('personImg').src = person.portraitUrl;
+    document.getElementById('personName').innerText = person.name;
+    document.getElementById('personBio').innerText = person.bio;
+    document.getElementById('mainVideo').src = `https://www.youtube-nocookie.com/embed/${person.youtubeId}?autoplay=1`;
+    
+    document.getElementById('btnGroup').innerHTML = `
+        <a href="${person.projectLink}" target="_blank" class="btn btn-project">View Project Materials</a>
+        <a href="${person.socialLink}" target="_blank" class="btn btn-social">Follow on Socials</a>
+    `;
+} else {
+    // Fallback if someone tries to visit a page that doesn't exist
+    document.body.innerHTML = `<h1 style="color:white; margin-top:100px;">Profile not found.</h1>`;
+}
+
+    </script>
+</body>
+</html>
