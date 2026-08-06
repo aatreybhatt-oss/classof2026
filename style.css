@@ -3,6 +3,11 @@
     src: url('fonts/PermanentMarker-Regular.woff2');
 }
 
+@font-face {
+    font-family: 'BlackFlag';
+    src: url('fonts/BlackFlag.woff2');
+}
+
 /* --- GLOBAL STYLES --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,7 +29,7 @@ body.gallery-page {
 
 /* --- PROFILE PAGE BACKGROUND --- */
 body.profile-page {
-    background-image: url('images/room.jpeg'); /* The room image */
+    background-image: url('images/room.png'); /* The room image */
 }
 
 /* --- SHARED CONTENT STYLES --- */
