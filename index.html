@@ -1,406 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script src="data.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class of 2026 Showcase</title>
-    <style>
-        :root {
-            --primary-color: rgba(0, 0, 0, 0); 
-            --bg-color: #590303;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* THE ROOM BACKGROUND */
-            background-image: url('room.jpeg'); /* REPLACE WITH YOUR ROOM IMAGE */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px;
-            margin: 0;
-            min-height: 100vh;
-        }
-
-        h1 { color: #f6f9ff; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-        p { color: #c3cede; margin-bottom: 40px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
-
-        /* THE TV FRAME - This mimics the physical TV in the room */
-        .tv-wrapper {
-            position: relative;
-            padding: 20px;
-            background: #1a1a1a; /* The black bezel */
-            border-radius: 40px;
-            border: 10px solid #2c2c2c;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
-            display: inline-block;
-            margin-bottom: 50px;
-        }
-
-        /* THE SCREEN (Your existing photo container) */
-        .photo-container {
-            position: relative;
-            display: inline-block;
-            border-radius: 10px;
-            overflow: hidden;
-            /* Removed the white border to look more like a screen */
-            cursor: crosshair;
-        }
-
-        .group-photo {
-            display: block;
-            max-width: 800px;
-            width: 100%;
-            height: auto;
-        }
-
-        .hotspot {
-            position: absolute;
-            width: 2.5%;
-            aspect-ratio: 1 / 1;
-            background-color: var(--primary-color);
-            border: 0px solid white;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.2s;
-            opacity: 0;
-            animation: pulse 4s infinite;
-        }
-
-        .tv-wrapper:hover .hotspot {
-            opacity: 1;
-        }
-
-        .hotspot:hover {
-            transform: scale(1.3);
-            background-color: rgba(150, 0, 0, 0.5);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
-        }
-
-        /* The Modal (Pop-up) */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            animation: modalAppear 0.3s ease-out;
-        }
-
-        @keyframes modalAppear {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .modal-content {
-            background: rgba(25, 22, 22, 0.98);
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 850px;
-            width: 90%;
-            position: relative;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            color: white;
-        }
-
-        .modal-header h2 {
-            color: #f6f9ff;
-            margin: 0;
-            font-size: 1.8rem;
-        }
-
-        .modal-header p {
-            margin: 5px 0 20px 0 !important;
-            font-size: 1rem;
-            color: #c3cede;
-        }
-
-        .modal-body {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 15px;
-            overflow: hidden;
-            flex: 2;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .portrait-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-            text-align: center;
-        }
-
-        .person-portrait {
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 15px;
-        }
-
-        .portrait-text h3 {
-            color: #f6f9ff;
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .portrait-text p {
-            font-size: 0.85rem;
-            color: #c3cede;
-            margin: 5px 0 0 0;
-        }
-
-        .button-group {
-            margin-top: 25px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: all 0.2s;
-            font-size: 14px;
-        }
-
-        .btn-project {
-            background-color: var(--bg-color);
-            color: white;
-        }
-
-        .btn-project:hover {
-            background-color: #1d0101;
-            transform: translateY(-2px);
-        }
-
-        .btn-social {
-            background-color: #030959;
-            color: white;
-        }
-
-        .btn-social:hover {
-            background-color: #1d0101;
-            transform: translateY(-2px);
-        }
-
-        .site-footer {
-            margin-top: 80px;
-            padding: 40px 20px;
-            background-color: rgba(0,0,0,0.5); /* Semi-transparent to see the room slightly */
-            border-top: 1px solid rgba(255,255,255,0.1);
-            width: 100%;
-            text-align: center;
-        }
-
-        .footer-content p {
-            margin: 5px 0;
-            font-size: 0.9rem;
-            color: #c4c4c4;
-        }
-
-        .footer-links a {
-            color: #c4c4c4;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 5px;
-            font-size: 0.6rem;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .modal-body {
-                flex-direction: column;
-            }
-            .video-container {
-                flex: none;
-                width: 100%;
-            }
-            .portrait-column {
-                width: 100%;
-            }
-            .tv-wrapper {
-                padding: 10px;
-                border-radius: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="gallery-page">
 
-    <h1 style="color: #f6f9ff;"><img src="banner.png" alt="Class of 2026"></h1>
-    <p style="color: #060a10;">Click on a person to see their journey video</p>
+    <h1 style="font-family: 'BlackFlag'; text-shadow: 4px 4px 8px rgba(0,0,0,0.8);">Class of 2026</h1>
+    <p style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Click a Polaroid to see their journey</p>
 
-    <!-- THE TV WRAPPER -->
-    <div class="tv-wrapper">
-        <div class="photo-container" id="photoContainer">
-            <img src="CLASS.jpeg" alt="Class Group" class="group-photo">
-            <!-- Hotspots generated by JS -->
-        </div>
+    <!-- The container where all Polaroids will "land" -->
+    <div class="gallery-container" id="galleryContainer">
+        <!-- JavaScript will inject polaroids here -->
     </div>
-
-    <div class="modal" id="infoModal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
-            
-            <div class="modal-header">
-                <h2 id="modalProjectTitle">Project Title</h2>
-                <p id="modalProjectDescription">Project description goes here...</p>
-            </div>
-
-            <div class="modal-body">
-                <div class="video-container">
-                    <iframe id="modalVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                </div>
-
-                <div class="portrait-column">
-                    <img id="modalPersonImage" src="" alt="Portrait" class="person-portrait">
-                    <div class="portrait-text">
-                        <h3 id="modalName">Student Name</h3>
-                        <p id="modalStudentBio">Student bio goes here...</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="button-group" id="buttonGroup"></div>
-        </div>
-    </div>
-
-    <script>
-        const classmates = [
-            {
-                name: "Nick Marino",
-                bio: "Nick is a heavy bass extraordinaire, known for his innovative sound design.",
-                projectTitle: "Redline2Headline",
-                projectDescription: "The most-voted distortion plugin of 2026, designed for extreme bass textures.",
-                youtubeId: "1sRkASGlOqc",
-                top: "32%",
-                left: "25%",
-                portraitUrl: "nick.png", 
-                projectLink: "https://google.com",
-                socialLink: "https://www.instagram.com/nick.marino13/"
-            },
-            {
-                name: "Alejandro Garcia",
-                bio: "Alejandro is a Peruvian songwriter and producer",
-                projectTitle: "Opia",
-                projectDescription: "Alejanddro explores his journey of self discovery through this LP",
-                youtubeId: "8sw36eZaNCU",
-                top: "44.5%",
-                left: "55.75%",
-                portraitUrl: "alejandro.png",
-                projectLink: "https://google.com",
-                socialLink: "https://www.instagram.com/4lej4ndro.wav/"
-            },
-            {
-                name: "Pipo Fernandez",
-                bio: "Pipo is a a singer songwriter and producer from the Philippines.",
-                projectTitle: "Long Way Home",
-                projectDescription: "Long Way home is an album where Pipo documents his grief, nostalgia, self worth and navigating life",
-                youtubeId: "jbYb7c81URI",
-                top: "32.5%",
-                left: "79%",
-                portraitUrl: "pipo.png",
-                projectLink: "https://google.com",
-                socialLink: "https://www.instagram.com/pipopottamus_/"
-            }
-        ];
-
-        const container = document.getElementById('photoContainer');
-        const modal = document.getElementById('infoModal');
-        const modalProjectTitle = document.getElementById('modalProjectTitle');
-        const modalProjectDescription = document.getElementById('modalProjectDescription');
-        const modalVideo = document.getElementById('modalVideo');
-        const buttonGroup = document.getElementById('buttonGroup');
-        const modalPersonImage = document.getElementById('modalPersonImage');
-        const modalName = document.getElementById('modalName');
-        const modalStudentBio = document.getElementById('modalStudentBio');
-
-        classmates.forEach(person => {
-            const dot = document.createElement('div');
-            dot.className = 'hotspot';
-            dot.style.top = person.top;
-            dot.style.left = person.left;
-            dot.onclick = () => showDetails(person);
-            container.appendChild(dot);
-        });
-
-        function showDetails(person) {
-            modalProjectTitle.innerText = person.projectTitle;
-            modalProjectDescription.innerText = person.projectDescription;
-            modalVideo.src = `https://www.youtube-nocookie.com/embed/${person.youtubeId}?autoplay=1`;
-            modalPersonImage.src = person.portraitUrl;
-            modalName.innerText = person.name;
-            modalStudentBio.innerText = person.bio;
-            buttonGroup.innerHTML = `
-                <a href="${person.projectLink}" target="_blank" class="btn btn-project">View Project Materials</a>
-                <a href="${person.socialLink}" target="_blank" class="btn btn-social">Follow on Socials</a>
-            `;
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-            modalVideo.src = ""; 
-            buttonGroup.innerHTML = "";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) closeModal();
-        }
-    </script>
 
     <footer class="site-footer">
         <div class="footer-content">
@@ -411,5 +26,49 @@
             </div>
         </div>
     </footer>
+
+<script>
+  // Load the data from our external file
+const data = classmates; 
+
+const container = document.getElementById('galleryContainer');
+
+// The Shuffle Function
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Shuffle the data
+const shuffledData = shuffleArray([...data]);
+
+// Create the Polaroids
+shuffledData.forEach((person) => {
+    const polaroid = document.createElement('a');
+    // This links to the profile page with a unique ID (e.g., profile.html?id=nick)
+    polaroid.href = `profile.html?id=${person.id}`;
+    polaroid.className = 'gallery-polaroid';
+    
+    const randomRotation = (Math.random() * 20 - 10); 
+    polaroid.style.transform = `rotate(${randomRotation}deg)`;
+    
+    const randomX = (Math.random() * 40 - 20);
+    polaroid.style.marginLeft = `${randomX}px`;
+
+    polaroid.innerHTML = `
+        <div class="polaroid-container">
+            <img src="${person.portraitUrl}" alt="${person.name}" class="person-portrait">
+            <div class="polaroid-footer">
+                <h3 style="margin:0;">${person.name}</h3>
+            </div>
+        </div>
+    `;
+
+    container.appendChild(polaroid);
+});
+</script>
 </body>
 </html>

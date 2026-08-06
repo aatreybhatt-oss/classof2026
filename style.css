@@ -1,0 +1,285 @@
+@font-face {
+    font-family: 'PermanentMarker';
+    src: url('fonts/PermanentMarker-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'BlackFlag';
+    src: url('fonts/BlackFlag.woff2');
+}
+
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* --- GALLERY PAGE BACKGROUND --- */
+body.gallery-page {
+    background-image: url('images/tabletop.jpg'); /* The table image */
+}
+
+/* --- PROFILE PAGE BACKGROUND --- */
+body.profile-page {
+    background-image: url('images/room.png'); /* The room image */
+}
+
+/* --- SHARED CONTENT STYLES --- */
+h1 { color: #f6f9ff; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+p { color: #c3cede; margin-bottom: 40px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+
+/* Profile Card / Container */
+.profile-container {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    width: 90%;
+    background: rgba(0, 0, 0, 0.613); 
+    padding: 40px;
+    border-radius: 30px;
+    backdrop-filter: blur(4px);
+}
+
+/* --- Updated Profile Styles --- */
+
+.left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 300px;
+}
+
+/* The Polaroid Frame Container */
+.polaroid-container {
+    background: white;
+    padding: 15px 15px 0px 15px; /* Extra padding at bottom for the name */
+    border-radius: 2px; /* Slight rounding like a real photo */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+    display: inline-block;
+    margin-bottom: 0px;
+    transition: transform 0.3s ease;
+}
+
+/* Subtle hover effect for the Polaroid */
+.polaroid-container:hover {
+    transform: rotate(-1deg) scale(1.02);
+}
+
+.person-portrait {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 2px; /* Real Polaroids aren't perfectly circular */
+    display: block;
+}
+
+.polaroid-footer {
+    padding-top: 2px; /* Space between image and name */
+    font-family: 'PermanentMarker'; /* Using your custom font */
+    font-size: 1.4rem;
+    color: #333;
+}
+
+/* The Bio (placed neatly under the Polaroid) */
+.portrait-text p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+
+.right-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.project-header h2 {
+    color: #f6f9ff;
+    margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.project-header p {
+    color: #c3cede;
+    margin: 10px 0 30px 0;
+    font-size: 1.2rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.button-group {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.btn-project { background-color: #590303; color: white; }
+.btn-project:hover { background-color: #1d0101; transform: translateY(-3px); }
+.btn-social { background-color: #030959; color: white; }
+.btn-social:hover { background-color: #1d0101; transform: translateY(-3px); }
+
+.nav-back {
+    margin-bottom: 40px;
+}
+
+.btn-back {
+    background: rgba(0, 0, 0, 0.613);
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: all 0.3s;
+    backdrop-filter: blur(4px);
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.615);
+    color: #590303;
+}
+
+.site-footer {
+    margin-top: 80px;
+    padding: 40px 20px;
+    background-color: rgba(0,0,0,0.4);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    text-align: center;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #c4c4c4;
+}
+
+.footer-links a {
+    color: #c4c4c4;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+    font-size: 0.6rem;
+}
+
+/* --- Gallery Specific Adjustments --- */
+
+/* This targets only the portraits inside the gallery */
+.gallery-polaroid .person-portrait {
+    width: 180px;  /* Reduced from 220px */
+    height: 180px; /* Reduced from 220px */
+}
+
+.gallery-polaroid .polaroid-container {
+    padding: 10px 10px 20px 10px; /* Slimmer padding for smaller photos */
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.gallery-polaroid .polaroid-footer h3 {
+    font-size: 1.1rem; /* Smaller font to match smaller photo */
+    text-align: center;
+}
+
+/* Adjust the container to allow more "breathing room" for the scatter */
+.gallery-container {
+    position: relative;
+    width: 95%;
+    /* This way, it will be AT LEAST 50% of the screen, 
+       but it will grow/shrink to fit the photos perfectly */
+    min-height: 50vh; 
+    height: auto; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0; /* This controls the specific gap at top and bottom */
+}
+
+/* We want the polaroids to be slightly smaller in the gallery than on the profile */
+.gallery-polaroid {
+    transition: transform 0.3s ease, z-index 0s;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* Hover effect for the gallery: Lift it up and put it in front */
+.gallery-polaroid:hover {
+    transform: scale(1.1) rotate(0deg) !important; /* Reset rotation on hover */
+    z-index: 100;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Mobile adjustment: make the polaroids smaller and stack them better */
+@media (max-width: 768px) {
+    .gallery-container {
+        height: auto;
+        padding: 40px;
+    }
+    .person-portrait {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .profile-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .left-column, .right-column {
+        width: 100%;
+    }
+    .video-container {
+        max-width: 100%;
+    }
+}
