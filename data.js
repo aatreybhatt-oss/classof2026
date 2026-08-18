@@ -6,7 +6,7 @@ const classmates = [
         projectTitle: "Redline2Headline",
         projectDescription: "The most-voted distortion plugin of 2026, designed for extreme bass textures. Multiple distortion algorithms and a skin in collaboration with box of frogs.",
         youtubeId: "1sRkASGlOqc",
-        portraitUrl: "images/nick.png", 
+        portraitUrls: ["images/nick_1.png", "images/nick_2.jpg", "images/nick_3.jpg"], // Add all your images here
         projectLink: "https://google.com",
         socialLink: "https://www.instagram.com/nick.marino13/"
     },
@@ -17,7 +17,7 @@ const classmates = [
         projectTitle: "Opia",
         projectDescription: "Alejandro explores his journey of self discovery through this LP.",
         youtubeId: "8sw36eZaNCU",
-        portraitUrl: "images/alejandro.png",
+        portraitUrls: ["images/alejandro_1.png", "images/alejandro_2.jpg", "images/alejandro_3.jpg"], // Add all your images here
         projectLink: "https://google.com",
         socialLink: "https://www.instagram.com/4lej4ndro.wav/"
     },
@@ -28,7 +28,7 @@ const classmates = [
         projectTitle: "Long Way Home",
         projectDescription: "Long Way home is an album where Pipo documents his grief, nostalgia, self worth and navigating life",
         youtubeId: "jbYb7c81URI",
-        portraitUrl: "images/pipo.png",
+        portraitUrls: ["images/pipo_1.png", "images/pipo_2.jpg", "images/pipo_3.jpg"], // Add all your images here
         projectLink: "https://google.com",
         socialLink: "https://www.instagram.com/pipopottamus_/"
     },
@@ -39,7 +39,7 @@ const classmates = [
         projectTitle: "Fatakda",
         projectDescription: "Fatakda is an audio-reactivev visualizer app that can take live audio input and generate visuals and visuals that animate and sync to the music being played in real time",
         youtubeId: "gpoZ0pnLYMk",
-        portraitUrl: "images/aatrey.jpg",
+        portraitUrls: ["images/aatrey_1.jpg", "images/aatrey_2.jpg", "images/aatrey_3.jpg"], // Add all your images here
         projectLink: "https://google.com",
         socialLink: "https://www.instagram.com/jacktheriffer/"
     }

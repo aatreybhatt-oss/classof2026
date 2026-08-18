@@ -48,7 +48,6 @@ const shuffledData = shuffleArray([...data]);
 // Create the Polaroids
 shuffledData.forEach((person) => {
     const polaroid = document.createElement('a');
-    // This links to the profile page with a unique ID (e.g., profile.html?id=nick)
     polaroid.href = `profile.html?id=${person.id}`;
     polaroid.className = 'gallery-polaroid';
     
@@ -58,9 +57,12 @@ shuffledData.forEach((person) => {
     const randomX = (Math.random() * 40 - 20);
     polaroid.style.marginLeft = `${randomX}px`;
 
+    // Logic to pick a random image from the array
+    const randomImg = person.portraitUrls[Math.floor(Math.random() * person.portraitUrls.length)];
+
     polaroid.innerHTML = `
         <div class="polaroid-container">
-            <img src="${person.portraitUrl}" alt="${person.name}" class="person-portrait">
+            <img src="${randomImg}" alt="${person.name}" class="person-portrait">
             <div class="polaroid-footer">
                 <h3 style="margin:0;">${person.name}</h3>
             </div>
@@ -69,6 +71,7 @@ shuffledData.forEach((person) => {
 
     container.appendChild(polaroid);
 });
+
 </script>
 </body>
 </html>

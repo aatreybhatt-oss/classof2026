@@ -66,7 +66,11 @@ const person = data.find(p => p.id === userId);
 if (person) {
     document.getElementById('projTitle').innerText = person.projectTitle;
     document.getElementById('projDesc').innerText = person.projectDescription;
-    document.getElementById('personImg').src = person.portraitUrl;
+    
+    // Logic to pick a random image from the array
+    const randomImg = person.portraitUrls[Math.floor(Math.random() * person.portraitUrls.length)];
+    document.getElementById('personImg').src = randomImg;
+    
     document.getElementById('personName').innerText = person.name;
     document.getElementById('personBio').innerText = person.bio;
     document.getElementById('mainVideo').src = `https://www.youtube-nocookie.com/embed/${person.youtubeId}?autoplay=1`;
@@ -75,7 +79,8 @@ if (person) {
         <a href="${person.projectLink}" target="_blank" class="btn btn-project">View Project Materials</a>
         <a href="${person.socialLink}" target="_blank" class="btn btn-social">Follow on Socials</a>
     `;
-} else {
+}
+ else {
     // Fallback if someone tries to visit a page that doesn't exist
     document.body.innerHTML = `<h1 style="color:white; margin-top:100px;">Profile not found.</h1>`;
 }
