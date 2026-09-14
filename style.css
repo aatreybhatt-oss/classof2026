@@ -4,8 +4,8 @@
 }
 
 @font-face {
-    font-family: 'BlackFlag';
-    src: url('fonts/BlackFlag.woff2');
+    font-family: 'Chalk';
+    src: url('fonts/Chalk.woff2');
 }
 
 /* --- GLOBAL STYLES --- */
@@ -29,7 +29,7 @@ body.gallery-page {
 
 /* --- PROFILE PAGE BACKGROUND --- */
 body.profile-page {
-    background-image: url('images/room.png'); /* The room image */
+    background-image: url('images/room.webp'); /* The room image */
 }
 
 /* --- SHARED CONTENT STYLES --- */
