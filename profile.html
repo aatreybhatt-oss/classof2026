@@ -55,11 +55,11 @@
        // Load the data
 const data = classmates;
 
-// 1. Get the ID from the URL (e.g., profile.html?id=nick)
+// 1. Get the ID from the URL
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('id');
 
-// 2. Find the person in our data list
+// 2. Find the person
 const person = data.find(p => p.id === userId);
 
 // 3. If we found them, fill the page!
@@ -67,7 +67,6 @@ if (person) {
     document.getElementById('projTitle').innerText = person.projectTitle;
     document.getElementById('projDesc').innerText = person.projectDescription;
     
-    // Logic to pick a random image from the array
     const randomImg = person.portraitUrls[Math.floor(Math.random() * person.portraitUrls.length)];
     document.getElementById('personImg').src = randomImg;
     
@@ -79,11 +78,32 @@ if (person) {
         <a href="${person.projectLink}" target="_blank" class="btn btn-project">View Project Materials</a>
         <a href="${person.socialLink}" target="_blank" class="btn btn-social">Follow on Socials</a>
     `;
-}
- else {
-    // Fallback if someone tries to visit a page that doesn't exist
+
+    // --- NEW AUTO-FIT LOGIC FOR PROFILE PAGE ---
+    const nameElement = document.getElementById('personName');
+    // We target the parent container to check the width against
+    const containerElement = nameElement.parentElement; 
+
+    function fitText() {
+        // Note: Profile page font starts at 1.4rem (from your CSS)
+        let fontSize = 1.4; 
+        nameElement.style.fontSize = fontSize + "rem";
+        
+        // While the name is wider than the container, keep shrinking the font
+        // but don't let it get smaller than 0.8rem
+        while (nameElement.offsetWidth > containerElement.offsetWidth && fontSize > 0.8) {
+            fontSize -= 0.05;
+            nameElement.style.fontSize = fontSize + "rem";
+        }
+    }
+
+    // Run the fit function once the page has rendered
+    setTimeout(fitText, 0);
+
+} else {
     document.body.innerHTML = `<h1 style="color:white; margin-top:100px;">Profile not found.</h1>`;
 }
+
 
     </script>
 </body>

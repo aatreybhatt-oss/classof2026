@@ -225,9 +225,15 @@ p { color: #c3cede; margin-bottom: 40px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8
 }
 
 .gallery-polaroid .polaroid-footer h3 {
-    font-size: 1.1rem; /* Smaller font to match smaller photo */
+    font-size: 1.1rem; 
     text-align: center;
+    /* Add these 3 lines */
+    max-width: 100%; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2; /* Prevents lines from touching each other */
 }
+
 
 /* Adjust the container to allow more "breathing room" for the scatter */
 .gallery-container {
