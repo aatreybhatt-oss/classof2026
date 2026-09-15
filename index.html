@@ -57,7 +57,6 @@ shuffledData.forEach((person) => {
     const randomX = (Math.random() * 40 - 20);
     polaroid.style.marginLeft = `${randomX}px`;
 
-    // Logic to pick a random image from the array
     const randomImg = person.portraitUrls[Math.floor(Math.random() * person.portraitUrls.length)];
 
     polaroid.innerHTML = `
@@ -70,8 +69,29 @@ shuffledData.forEach((person) => {
     `;
 
     container.appendChild(polaroid);
-});
 
+    // --- NEW AUTO-FIT LOGIC ---
+    const nameElement = polaroid.querySelector('.polaroid-footer h3');
+    const containerElement = polaroid.querySelector('.polaroid-container');
+    
+    // This function checks if the name is too wide for the container
+    // and shrinks the font size until it fits.
+    function fitText() {
+        let fontSize = 1.1; // Starting font size in rem
+        nameElement.style.fontSize = fontSize + "rem";
+        
+        // While the text is wider than the container, keep shrinking the font
+        // but don't let it get smaller than 0.7rem
+        while (nameElement.offsetWidth > containerElement.offsetWidth && fontSize > 0.7) {
+            fontSize -= 0.05;
+            nameElement.style.fontSize = fontSize + "rem";
+        }
+    }
+
+    // Run the fit function once the element is rendered
+    // We use a tiny timeout to ensure the browser has calculated the widths
+    setTimeout(fitText, 0);
+});
 </script>
 </body>
 </html>
