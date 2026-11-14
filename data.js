@@ -75,6 +75,28 @@ const classmates = [
         portraitUrls: ["images/sam_1.jpg", "images/sam_2.jpg", "images/sam_3.jpg"], // Add all your images here
         projectLink: "https://drive.google.com/drive/folders/1oT_-1PUp7ogsVJUouhWiAVU_xXG86LLV?usp=sharing",
         socialLink: "https://www.instagram.com/sam_vivs"
+    },
+    {
+        id: "alice",
+        name: "Alice O’Conor",
+        bio: "Alice Joan is an Irish-French music producer, songwriter, and sound engineer working in alternative pop. Her work blends electronic production with the warmth and texture of recorded acoustic instruments, while also placing strong emphasis on polished and creative vocal production. Drawing on her multicultural background and technical expertise, she approaches music as both a writer and a sonic architect, shaping emotionally driven songs from the earliest ideas through to final production.",
+        projectTitle: "Flammable: a nine song album",
+        projectDescription: "Flammable is an album that blends electronic and acoustic elements, which is rooted in her artistic and cultural identity. This album touches on themes such as relationships, loss, and self-doubt, and aims to reconnect people with their emotions and human rawness.",
+        youtubeId: "anAyjpB72Dc",
+        portraitUrls: ["images/alice_1.jpg", "images/alice_2.jpg", "images/alice_3.jpg"], // Add all your images here
+        projectLink: "https://docs.google.com/document/d/17untsOmE2ZEyst2zP3q8rFlFyXt0pZwij9o6oGN1z14/edit?usp=sharing",
+        socialLink: "https://www.instagram.com/_alice_joan_/"
+    },
+    {
+        id: "najwa",
+        name: "Najwa Al Aswad",
+        bio: "Najwa Al-Aswad is a Lebanese-American DJ and music producer currently residing in Madrid, Spain. She blends Arabic rhythms, global grooves, and deep electronic textures to create genre-fluid sets that move both heart and body. Drawing from a decade of experience behind the decks and a background in community organizing and music production, her sound spans house, techno, jungle, and diasporic bass. Whether in intimate settings or on big systems, she curates with care, weaving together music that uplifts and connects.",
+        projectTitle: "Silim: A 6 Track EP of Lebanese heritage synthesis in  Electronic Music",
+        projectDescription: "Silim is a six-track EP produced entirely in Ableton Live. The project unfolds as a transnational sonic dialogue across Beirut, Boston, and Valencia — three cities that mark the author's diasporic geography — and is structured as a narrative arc moving from inherited trauma toward reimagined futures. Each track was conceived as a site of sonic witnessing, where archival materials, original composition, and collaborative performance converge. The author sourced field recordings and documentary audio from archives including the American University of Beirut's refugee archive and vintage Lebanese documentary footage. These archival layers were processed, warped, and resampled in Ableton Live, transforming historical residue into living compositional material.",
+        youtubeId: "GopUfRcDF3k",
+        portraitUrls: ["images/najwa_1.jpg", "images/najwa_2.png", "images/najwa_3.png"], // Add all your images here
+        projectLink: "https://najwaalaswad.bandcamp.com/album/silim",
+        socialLink: "https://www.instagram.com/najwa_al_aswad/"
     }
     // ADD EVERY OTHER STUDENT HERE FOLLOWING THE SAME FORMAT
 ];
