@@ -39,7 +39,7 @@ const classmates = [
         projectTitle: "Fatakda",
         projectDescription: "Fatakda is an audio-reactivev visualizer app that can take live audio input and generate visuals and visuals that animate and sync to the music being played in real time",
         youtubeId: "xhgIOlw2YUk",
-        portraitUrls: ["images/aatrey_1.jpg", "images/aatrey_2.jpg", "images/aatrey_3.jpg"], // Add all your images here
+        portraitUrls: ["images/aatrey_1.jpg", "images/aatrey_2.jpg", "images/aatrey_3.jpg",], // Add all your images here
         projectLink: "https://github.com/aatreybhatt-oss/fatakda",
         socialLink: "https://www.instagram.com/jacktheriffer/"
     },
@@ -97,6 +97,17 @@ const classmates = [
         portraitUrls: ["images/najwa_1.jpg", "images/najwa_2.png", "images/najwa_3.png"], // Add all your images here
         projectLink: "https://najwaalaswad.bandcamp.com/album/silim",
         socialLink: "https://www.instagram.com/najwa_al_aswad/"
+    },
+    {
+        id: "adi",
+        name: "Adi Orion",
+        bio: "Adi Orion – Singer, voice researcher, songwriter, and music producer. I tell stories, love words, and create spaces of connection for people with one another and with themselves. My music blends roots embedded in Hebrew and Middle Eastern folk with far-reaching branches of many genres and cultures - drawing influences from British and American folk, jazz, gospel elements, and traditions of communal singing. I sing in both Hebrew and English, cherish human connection, believe in peace and humanity, and combine vocal virtuosity with accessible storytelling and an open heart for all. My performances are an opportunity for a sincere, direct encounter with imperfection, grief, celebration, and the community that binds it all together. I opened shows for Ehud Banai and Amir Lev, and have been performing in Israel and around the world for years (Europe, USA, India). I hold a bachelor's degree in multi-disciplinary vocal studies from the Jerusalem Academy of Music and Dance, and a master's degree in Music Production, Technology and Innovation (MPTI) from Berklee Valencia.",
+        projectTitle: "Mechadash - From the Start / Album",
+        projectDescription: "Adi Orion’s third album, Mechadash (From the Start), is a twelve-track collection exploring identity within a fragmented reality. Written in Hebrew and English, the mostly acoustic album was produced by Orion and recorded with live instruments alongside musicians from around the world. Blending folk traditions, communal singing, jazz, Arabic music, and singer-songwriter influences, the album reflects Orion’s Hebrew, Jewish, and Middle Eastern roots while embracing a universal musical language.",
+        youtubeId: "i3L62Rqp1GY",
+        portraitUrls: ["images/adi_1.jpg", "images/adi_2.jpg", "images/adi_3.jpg"], // Add all your images here
+        projectLink: "https://docs.google.com/document/d/1hBOZzclBBUkekrJzSwdoeLJh6qlP40gnXI1iQNRjIOY/edit?usp=sharing",
+        socialLink: "https://www.instagram.com/adiorion/"
     }
     // ADD EVERY OTHER STUDENT HERE FOLLOWING THE SAME FORMAT
 ];
